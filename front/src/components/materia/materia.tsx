@@ -7,11 +7,14 @@ interface MateriaProps {
     nombre: string;
     cargaHoraria: number;
     correlativas: number[];
+    esOptativa: boolean;
+    optativas: number;
+    optativasAprobadas: number; // Añade este prop
 }
 
-export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, correlativas }) => {
+export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, correlativas, esOptativa, optativas, optativasAprobadas }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [notaInput, setNotaInput] = useState(''); // Estado para manejar el valor del input
+    const [notaInput, setNotaInput] = useState('');
     const notas = useMateriasStore((state) => state.notas[codigo]) || [];
     const addNota = useMateriasStore((state) => state.addNota);
     const deleteLastNota = useMateriasStore((state) => state.deleteLastNota);
@@ -27,7 +30,7 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
         const newNota = parseFloat(notaInput);
         if (!isNaN(newNota)) {
             addNota(codigo, newNota);
-            setNotaInput(''); // Limpiar el input después de agregar la nota
+            setNotaInput('');
         }
     };
 
@@ -39,16 +42,19 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
     const canBeTaken = areCorrelativasApproved || !correlativas.length;
 
     const getCardColor = () => {
-        if (!canBeTaken) {
-            return 'lightgray'; // Gray for unapproved correlatives
-        }
-        if (notas.length > 0 && notas[notas.length - 1] < 4) {
-            return 'red'; // Red if the last note is less than 4
-        }
         if (notas.length > 0 && notas[notas.length - 1] >= 4) {
             return 'green';
         }
-        return 'yellow'; // Default color if not otherwise specified
+        if (esOptativa && optativasAprobadas >= optativas) {
+            return 'lightgreen'; // Cambia el color cuando se alcanzan las optativas requeridas
+        }
+        if (!canBeTaken) {
+            return 'lightgray'; 
+        }
+        if (notas.length > 0 && notas[notas.length - 1] < 4) {
+            return 'red'; 
+        }
+        return 'yellow'; 
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -63,7 +69,7 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
             style={{ backgroundColor: getCardColor() }}
             onClick={toggleOpen}
         >
-            <h3>{nombre}</h3>
+            <h3>{esOptativa ? `${nombre} (ELECTIVA)` : nombre}</h3>
             <div className={style.footer}>
                 <span className={style.codigo}>{codigo}</span>
                 <span className={style.cargaHoraria}>{cargaHoraria}</span>
@@ -109,8 +115,8 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
                                 value={notaInput}
                                 onClick={(e) => e.stopPropagation()}
                                 onChange={handleNotaChange}
-                                onKeyPress={handleKeyPress} // Agregar nota al presionar Enter
-                                onBlur={handleNotaSubmit} // Agregar nota al perder foco
+                                onKeyPress={handleKeyPress} 
+                                onBlur={handleNotaSubmit} 
                                 min={1}
                                 max={10}
                                 className={style.numericInput}

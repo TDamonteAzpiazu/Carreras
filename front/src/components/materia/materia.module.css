@@ -1,4 +1,32 @@
 .card {
     border: 2px solid black;
     margin: 1rem;
+    width: 15rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.codigo {
+    align-self: flex-start;
+}
+
+.cargaHoraria {
+    align-self: flex-end;
+}
+
+.correlativas {
+    margin-top: 1rem;
+}
+
+.notas {
+    margin-top: 1rem;
+}
+
+.notas input {
+    margin-bottom: 0.5rem;
 }

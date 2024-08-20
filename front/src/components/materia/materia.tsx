@@ -9,7 +9,7 @@ interface MateriaProps {
     correlativas: number[];
     esOptativa: boolean;
     optativas: number;
-    optativasAprobadas: number; // Añade este prop
+    optativasAprobadas: number; 
 }
 
 export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, correlativas, esOptativa, optativas, optativasAprobadas }) => {
@@ -23,12 +23,20 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
     const toggleOpen = () => setIsOpen(!isOpen);
 
     const handleNotaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNotaInput(e.target.value);
+        const value = e.target.value;
+        // Permitir valores vacíos o números menores o iguales a 10
+        if (value === '' || /^[0-9]*$/.test(value)) {
+            const numericValue = parseFloat(value);
+            if (numericValue <= 10 || isNaN(numericValue)) {
+                setNotaInput(value);
+            }
+        }
     };
 
     const handleNotaSubmit = () => {
         const newNota = parseFloat(notaInput);
-        if (!isNaN(newNota)) {
+        // Aceptar solo valores válidos entre 1 y 10
+        if (!isNaN(newNota) && newNota >= 1 && newNota <= 10) {
             addNota(codigo, newNota);
             setNotaInput('');
         }
@@ -46,7 +54,7 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
             return 'green';
         }
         if (esOptativa && optativasAprobadas >= optativas) {
-            return 'lightgreen'; // Cambia el color cuando se alcanzan las optativas requeridas
+            return 'lightgreen'; 
         }
         if (!canBeTaken) {
             return 'lightgray'; 
@@ -57,31 +65,27 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
         return 'yellow'; 
     };
 
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            handleNotaSubmit();
-        }
-    };
-
     return (
         <div
-            className={style.card}
+            className={`${style.card} ${isOpen ? style.expanded : ""}`} 
             style={{ backgroundColor: getCardColor() }}
             onClick={toggleOpen}
         >
-            <h3>{esOptativa ? `${nombre} (ELECTIVA)` : nombre}</h3>
-            <div className={style.footer}>
+            <div className={style.cardHeader}>
                 <span className={style.codigo}>{codigo}</span>
-                <span className={style.cargaHoraria}>{cargaHoraria}</span>
+            </div>
+            <div className={style.cardBody}>
+                <h3>{nombre}</h3>
             </div>
             {isOpen && (
                 <>
+                    <div className={style.cargaHoraria}>
+                        <span>Carga horaria: {cargaHoraria} horas</span>
+                    </div>
                     <div className={style.correlativas}>
                         <p>
                             Correlativas: {correlativas.length > 0
-                                ? canBeTaken
-                                    ? 'Todas aprobadas'
-                                    : correlativas.join(", ")
+                                ? correlativas.join(", ")
                                 : 'No hay correlativas'}
                         </p>
                         {!canBeTaken && (
@@ -115,11 +119,15 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
                                 value={notaInput}
                                 onClick={(e) => e.stopPropagation()}
                                 onChange={handleNotaChange}
-                                onKeyPress={handleKeyPress} 
                                 onBlur={handleNotaSubmit} 
                                 min={1}
                                 max={10}
                                 className={style.numericInput}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        handleNotaSubmit();
+                                    }
+                                }}
                             />
                         )}
                     </div>

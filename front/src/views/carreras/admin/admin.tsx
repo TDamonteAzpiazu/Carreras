@@ -1,7 +1,8 @@
-import { Materia } from "../../../components/materia/materia"
-import { admin } from "../../../helpers/admin"
-import style from "./admin.module.css"
+import React, { useState } from "react";
 import { useMateriasStore } from "../../../store/useMateriasStore";
+import { admin } from "../../../helpers/admin";
+import style from "./admin.module.css";
+import { Materia } from "../../../components/materia/materia";
 
 export const Admin = () => {
     const materiasNotas = useMateriasStore((state) => state.notas);
@@ -9,19 +10,59 @@ export const Admin = () => {
     const optativasAprobadas = admin.reduce((count, materia) => {
         const notas = materiasNotas[materia.codigo] || [];
         if (materia.esOptativa && notas.some(nota => nota >= 4)) {
-            count++
+            count++;
         }
-        return count
-    }, 0)
+        return count;
+    }, 0);
+
+    const [showOptativas, setShowOptativas] = useState(false);
 
     return (
         <div>
-            <h2>Materias de Administracion</h2>
+            <h2>Materias de admin</h2>
             <div className={style.container}>
-                {admin.map(materia => {
-                    return <Materia key={materia.codigo} codigo={materia.codigo} nombre={materia.nombre} cargaHoraria={materia.cargaHorariaSemanal} correlativas={materia.correlativas} esOptativa={materia.esOptativa} optativas={2} optativasAprobadas={optativasAprobadas}/>
-                })}
+                {admin
+                    .filter(materia => !materia.esOptativa)
+                    .map(materia => (
+                        <Materia
+                            key={materia.codigo}
+                            codigo={materia.codigo}
+                            nombre={materia.nombre}
+                            cargaHoraria={materia.cargaHorariaSemanal}
+                            correlativas={materia.correlativas}
+                            esOptativa={materia.esOptativa}
+                            optativas={2}
+                            optativasAprobadas={optativasAprobadas}
+                        />
+                    ))
+                }
             </div>
+            <button
+                className={style.toggleButton}
+                onClick={() => setShowOptativas(!showOptativas)}
+            >
+                Necesitas 2 Optativas
+                <span className={`${style.arrow} ${showOptativas ? style.up : style.down}`}></span>
+            </button>
+            {showOptativas && (
+                <div className={style.container}>
+                    {admin
+                        .filter(materia => materia.esOptativa)
+                        .map(materia => (
+                            <Materia
+                                key={materia.codigo}
+                                codigo={materia.codigo}
+                                nombre={materia.nombre}
+                                cargaHoraria={materia.cargaHorariaSemanal}
+                                correlativas={materia.correlativas}
+                                esOptativa={materia.esOptativa}
+                                optativas={2}
+                                optativasAprobadas={optativasAprobadas}
+                            />
+                        ))
+                    }
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};

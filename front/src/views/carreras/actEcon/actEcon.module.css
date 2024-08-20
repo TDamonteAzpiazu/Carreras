@@ -1,6 +1,70 @@
+/* Agregado para el botón del dropdown */
+.dropdownToggle {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Ajuste para el contenedor de tarjetas */
 .container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 1rem;
+    padding: 0 1rem; /* Margen en los costados */
+}
+
+/* Ajustes para el contenedor expandido */
+.card.expanded {
     width: 100%;
-    height: 100%;
+}
+
+/* Grid de tarjetas */
+@media (min-width: 1200px) {
+    .container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* 2 materias por renglón en pantallas pequeñas */
+@media (max-width: 767px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Estilo para el botón que muestra/oculta las optativas */
+.toggleButton {
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+/* Estilo de la flecha hacia abajo */
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    margin-left: 0.5rem;
+}
+
+/* Flecha hacia abajo */
+.down {
+    border-top: 0.5rem solid black;
+}
+
+/* Flecha hacia arriba */
+.up {
+    border-bottom: 0.5rem solid black;
+    border-top: none;
 }

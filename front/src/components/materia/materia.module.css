@@ -1,48 +1,72 @@
-.numericInput {
-    -moz-appearance: textfield;
-    appearance: none;
-}
+/* materia.module.css */
 
-.numericInput::-webkit-outer-spin-button,
-.numericInput::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.deleteButton {
-    background: none;
-    border: none;
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
-    margin-left: 0.5rem;
-}
-
+/* Ajuste para la tarjeta de materia */
 .card {
-    /* Otros estilos */
+    position: relative;
     border: 2px solid black;
-    align-content: center;
-    margin: 1rem;
-    width: 15rem;
-    padding: 0.5rem ;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    word-wrap: break-word;
+    word-break: break-word;
+    font-weight: normal;
+    display: flex;
+    flex-direction: column;
 }
 
-
-.footer {
+/* Header de la tarjeta */
+.cardHeader {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.nombre {
+    font-size: 1rem;
+    font-weight: normal;
+    flex-grow: 1;
 }
 
 .codigo {
-    align-self: flex-start;
+    font-size: 0.9rem;
+    font-weight: normal;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap; /* No permitir salto de línea */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Mostrar '...' si es demasiado largo */
+}
+
+/* Para contenido expandido */
+.card.expanded .cardContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    border-radius: 8px;
+    z-index: 1;
+    padding: 1rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    margin-top: 1rem;
 }
 
 .cargaHoraria {
-    align-self: flex-end;
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-top: 1rem;
 }
 
 .correlativas {
-    margin-top: 1rem;
+    font-size: 0.9rem;
 }
 
 .notas {
@@ -51,11 +75,29 @@
 
 .notas input {
     margin-bottom: 0.5rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
+    width: 80%;
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-/* materia.module.css */
+.notas input::-webkit-inner-spin-button,
+.notas input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .error {
-    color: red;
+    color: rgb(211, 10, 10);
     font-weight: bold;
 }
 
+.deleteButton {
+    background: rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+    margin-left: 0.3rem;
+    font-weight: bold;
+}

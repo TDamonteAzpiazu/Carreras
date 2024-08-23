@@ -1,6 +1,6 @@
 import './App.css';
-import { Navbar } from './components/navbar/navbar';
-import { Footer } from './components/footer/footer';
+import { Navbar } from './components/primary/navbar/navbar';
+import { Footer } from './components/primary/footer/footer';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './views/home/home';
 import { Sistemas } from './views/carreras/sistemas/sistemas';

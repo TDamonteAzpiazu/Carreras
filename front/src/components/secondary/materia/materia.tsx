@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMateriasStore } from "../../store/useMateriasStore";
+import { useMateriasStore } from "../../../store/useMateriasStore";
 import style from "./materia.module.css";
 
 interface MateriaProps {

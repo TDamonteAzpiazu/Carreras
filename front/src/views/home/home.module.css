@@ -1,0 +1,30 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    height: 90vh;
+}
+
+.grid > div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.infoGeneral {
+    grid-area: 1 / 1;
+}
+
+.calculoPromedio {
+    grid-area: 1 / 2;
+}
+
+.barrasProgreso {
+    grid-area: 2 / 1;
+}
+
+.recomendacionMaterias {
+    grid-area: 2 / 2;
+}

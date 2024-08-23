@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMateriasStore } from "../../../store/useMateriasStore";
 import { contador } from "../../../helpers/contador";
 import style from "./contador.module.css";
-import { Materia } from "../../../components/materia/materia";
+import { Materia } from "../../../components/secondary/materia/materia";
 
 export const Contador = () => {
     const materiasNotas = useMateriasStore((state) => state.notas);
@@ -41,7 +41,7 @@ export const Contador = () => {
                 className={style.toggleButton}
                 onClick={() => setShowOptativas(!showOptativas)}
             >
-                Necesitas 2 Optativas
+                Necesitas 1 Optativa
                 <span className={`${style.arrow} ${showOptativas ? style.up : style.down}`}></span>
             </button>
             {showOptativas && (

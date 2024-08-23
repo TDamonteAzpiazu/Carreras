@@ -3,7 +3,7 @@
 /* Ajuste para la tarjeta de materia */
 .card {
     position: relative;
-    border: 2px solid black;
+    border: 1.5px solid black;
     border-radius: 8px;
     padding: 1rem;
     cursor: pointer;

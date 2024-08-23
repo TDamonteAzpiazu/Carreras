@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMateriasStore } from "../../../store/useMateriasStore";
 import { admin } from "../../../helpers/admin";
 import style from "./admin.module.css";
-import { Materia } from "../../../components/materia/materia";
+import { Materia } from "../../../components/secondary/materia/materia";
 
 export const Admin = () => {
     const materiasNotas = useMateriasStore((state) => state.notas);

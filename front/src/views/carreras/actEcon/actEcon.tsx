@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMateriasStore } from "../../../store/useMateriasStore";
 import { actuarioEcon } from "../../../helpers/actuarioEcon";
 import style from "./actEcon.module.css";
-import { Materia } from "../../../components/materia/materia";
+import { Materia } from "../../../components/secondary/materia/materia";
 
 export const ActEcon = () => {
     const materiasNotas = useMateriasStore((state) => state.notas);

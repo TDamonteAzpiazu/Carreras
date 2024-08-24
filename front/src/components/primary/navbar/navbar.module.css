@@ -1,0 +1,36 @@
+/* Navbar.module.css */
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    text-decoration: none;
+    margin: 0.5rem;
+}
+
+.navbar button {
+    background-color: #61dafb;
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.navbar button:hover {
+    background-color: #21a1f1;
+    transform: scale(1.05);
+}
+
+.navbar button:active {
+    background-color: #1e90ff;
+}

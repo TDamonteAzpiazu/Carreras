@@ -12,7 +12,7 @@ export const ProgressBar = ({ progreso } : { progreso: number }) => {
     };
 
     return (
-        <div style={{ width: '100%', backgroundColor: '#e0e0de', borderRadius: '0.75rem' }}>
+        <div style={{ width: '100%', backgroundColor: '#b3b3b1', borderRadius: '0.75rem' }}>
             <div style={progressStyle}>{`${progreso}%`}</div>
         </div>
     );

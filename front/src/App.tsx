@@ -23,7 +23,7 @@ function App() {
         <Route path="/administracion" element={<Admin />} />
         <Route path="/contador" element={<Contador />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

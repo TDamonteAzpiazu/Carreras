@@ -1,36 +1,55 @@
-/* Navbar.module.css */
-
 .navbar {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #282c34;
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
-.navbar a {
-    text-decoration: none;
-    margin: 0.5rem;
+.left {
+    flex: 1;
 }
 
-.navbar button {
-    background-color: #61dafb;
-    border: none;
-    border-radius: 0.25rem;
-    color: white;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+.right {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.navbar button:hover {
-    background-color: #21a1f1;
-    transform: scale(1.05);
+.carreras {
+    display: flex;
+    gap: 1rem;
 }
 
-.navbar button:active {
-    background-color: #1e90ff;
+.dropdownContainer {
+    display: none;
+    position: relative;
+    z-index: 1001;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #282c34;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 1002;
+}
+
+.dropdownMenu button {
+    margin: 0.25rem;
+    width: 90%;
+}
+
+@media (max-width: 768px) {
+    .carreras {
+        display: none;
+    }
+    .dropdownContainer {
+        display: block;
+    }
 }

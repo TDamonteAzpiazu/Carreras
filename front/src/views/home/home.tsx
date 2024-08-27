@@ -67,109 +67,107 @@ export const Home = () => {
         return Math.floor(progreso);
     }
 
-// Función para calcular el valor A
-const calcularValorA = (materiasAprobadas: number, materiasCursadas: number) => {
-    return materiasCursadas > 0 ? (materiasAprobadas / materiasCursadas) * 100 : 0;
-};
+    // Función para calcular el valor A
+    const calcularValorA = (materiasAprobadas: number, materiasCursadas: number) => {
+        return materiasCursadas > 0 ? (materiasAprobadas / materiasCursadas) * 100 : 0;
+    };
 
-// Función para calcular el valor B
-const calcularValorB = (materiasAprobadas: number) => {
-    return materiasAprobadas * 3;
-};
+    // Función para calcular el valor B
+    const calcularValorB = (materiasAprobadas: number) => {
+        return materiasAprobadas * 3;
+    };
 
-// Función para calcular el valor C
-const calcularValorC = (promedio: number) => {
-    return promedio * 3;
-};
+    // Función para calcular el valor C
+    const calcularValorC = (promedio: number) => {
+        return promedio * 3;
+    };
 
-// Función para calcular el valor D
-const calcularValorD = (notas: any) => {
-    const carreras = Object.keys(materiasXCarrera) as Array<keyof typeof materiasXCarrera>;
-    let materiasFaltantesPorCarrera: { [key: string]: number } = {};
+    // Función para calcular el valor D
+    const calcularValorD = (notas: any) => {
+        const carreras = Object.keys(materiasXCarrera) as Array<keyof typeof materiasXCarrera>;
+        let materiasFaltantesPorCarrera: { [key: string]: number } = {};
 
-    // Calculamos las materias faltantes para cada carrera
-    carreras.forEach(carrera => {
-        const { materias: totalMaterias, optativas: maxOptativas } = materiasXCarrera[carrera];
-        const materiasHelper = getHelper(carrera);
+        // Calculamos las materias faltantes para cada carrera
+        carreras.forEach(carrera => {
+            const { materias: totalMaterias, optativas: maxOptativas } = materiasXCarrera[carrera];
+            const materiasHelper = getHelper(carrera);
 
-        let materiasAprobadas = 0;
-        let optativasAprobadas = 0;
+            let materiasAprobadas = 0;
+            let optativasAprobadas = 0;
 
-        materiasHelper.forEach((materia) => {
-            const notasMateria = notas[materia.codigo] || [];
-            if (notasMateria.some((nota : number) => nota >= 4)) {
-                if (materia.esOptativa) {
-                    if (optativasAprobadas < maxOptativas) {
-                        optativasAprobadas++;
+            materiasHelper.forEach((materia) => {
+                const notasMateria = notas[materia.codigo] || [];
+                if (notasMateria.some((nota : number) => nota >= 4)) {
+                    if (materia.esOptativa) {
+                        if (optativasAprobadas < maxOptativas) {
+                            optativasAprobadas++;
+                        }
+                    } else {
+                        materiasAprobadas++;
                     }
-                } else {
-                    materiasAprobadas++;
                 }
-            }
+            });
+
+            const totalMateriasCursadas = materiasAprobadas + optativasAprobadas;
+            const materiasFaltantes = totalMaterias - totalMateriasCursadas;
+
+            materiasFaltantesPorCarrera[carrera] = materiasFaltantes;
         });
 
-        const totalMateriasCursadas = materiasAprobadas + optativasAprobadas;
-        const materiasFaltantes = totalMaterias - totalMateriasCursadas;
+        // Encontramos el valor de D más alto según las materias faltantes
+        let valorD = 0;
+        for (const materiasFaltantes of Object.values(materiasFaltantesPorCarrera)) {
+            if (materiasFaltantes === 1) valorD = Math.max(valorD, 90);
+            else if (materiasFaltantes === 2) valorD = Math.max(valorD, 65);
+            else if (materiasFaltantes === 3) valorD = Math.max(valorD, 45);
+            else if (materiasFaltantes === 4) valorD = Math.max(valorD, 30);
+            else if (materiasFaltantes === 5) valorD = Math.max(valorD, 20);
+            else if (materiasFaltantes === 6) valorD = Math.max(valorD, 15);
+            else if (materiasFaltantes === 7) valorD = Math.max(valorD, 10);
+            else if (materiasFaltantes === 8) valorD = Math.max(valorD, 5);
+            else if (materiasFaltantes >= 9) valorD = Math.max(valorD, 0);
+        }
 
-        materiasFaltantesPorCarrera[carrera] = materiasFaltantes;
-    });
+        return valorD;
+    };
 
-    // Encontramos el valor de D más alto según las materias faltantes
-    let valorD = 0;
-    for (const materiasFaltantes of Object.values(materiasFaltantesPorCarrera)) {
-        if (materiasFaltantes === 1) valorD = Math.max(valorD, 90);
-        else if (materiasFaltantes === 2) valorD = Math.max(valorD, 65);
-        else if (materiasFaltantes === 3) valorD = Math.max(valorD, 45);
-        else if (materiasFaltantes === 4) valorD = Math.max(valorD, 30);
-        else if (materiasFaltantes === 5) valorD = Math.max(valorD, 20);
-        else if (materiasFaltantes === 6) valorD = Math.max(valorD, 15);
-        else if (materiasFaltantes === 7) valorD = Math.max(valorD, 10);
-        else if (materiasFaltantes === 8) valorD = Math.max(valorD, 5);
-        else if (materiasFaltantes >= 9) valorD = Math.max(valorD, 0);
-    }
+    // Función para calcular el ranking
+    const calcularRanking = (notas: any, promedio: number) => {
+        const materiasAprobadasSet = new Set<string>();
+        const materiasCursadasSet = new Set<string>();
 
-    return valorD;
-};
+        // Recorremos todas las carreras
+        const carreras = Object.keys(materiasXCarrera) as Array<keyof typeof materiasXCarrera>;
 
-// Función para calcular el ranking
-const calcularRanking = (notas: any, promedio: number) => {
-    const materiasAprobadasSet = new Set<string>();
-    const materiasCursadasSet = new Set<string>();
+        carreras.forEach(carrera => {
+            const { materias, optativas } = materiasXCarrera[carrera];
+            const materiasHelper = getHelper(carrera);
 
-    // Recorremos todas las carreras
-    const carreras = Object.keys(materiasXCarrera) as Array<keyof typeof materiasXCarrera>;
+            materiasHelper.forEach((materia) => {
+                const notasMateria = notas[materia.codigo] || [];
 
-    carreras.forEach(carrera => {
-        const { materias, optativas } = materiasXCarrera[carrera];
-        const materiasHelper = getHelper(carrera);
+                // Contamos las materias aprobadas
+                if (notasMateria.some((nota: number) => nota >= 4)) {
+                    materiasAprobadasSet.add(materia.codigo.toString());
+                }
 
-        materiasHelper.forEach((materia) => {
-            const notasMateria = notas[materia.codigo] || [];
-
-            // Contamos las materias aprobadas
-            if (notasMateria.some((nota: number) => nota >= 4)) {
-                materiasAprobadasSet.add(materia.codigo.toString());
-            }
-
-            // Contamos las materias cursadas
-            if (notasMateria.length > 0) {
-                materiasCursadasSet.add(materia.codigo.toString());
-            }
+                // Contamos las materias cursadas
+                if (notasMateria.length > 0) {
+                    materiasCursadasSet.add(materia.codigo.toString());
+                }
+            });
         });
-    });
 
-    const totalMateriasAprobadas = materiasAprobadasSet.size;
-    const totalMateriasCursadas = materiasCursadasSet.size;
+        const totalMateriasAprobadas = materiasAprobadasSet.size;
+        const totalMateriasCursadas = materiasCursadasSet.size;
 
-    const A = calcularValorA(totalMateriasAprobadas, totalMateriasCursadas);
-    const B = calcularValorB(totalMateriasAprobadas);
-    const C = calcularValorC(promedio);
-    const D = calcularValorD(notas);
+        const A = calcularValorA(totalMateriasAprobadas, totalMateriasCursadas);
+        const B = calcularValorB(totalMateriasAprobadas);
+        const C = calcularValorC(promedio);
+        const D = calcularValorD(notas);
 
-    return A + B + C + D;
-};
-
-
+        return A + B + C + D;
+    };
 
     return (
         <div className={styles.grid}>

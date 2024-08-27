@@ -14,15 +14,17 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sistemas" element={<Sistemas />} />
-        <Route path="/actuarioEconomia" element={<ActEcon />} />
-        <Route path="/actuarioAdministracion" element={<ActAdmin />} />
-        <Route path="/economia" element={<Economia />} />
-        <Route path="/administracion" element={<Admin />} />
-        <Route path="/contador" element={<Contador />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sistemas" element={<Sistemas />} />
+          <Route path="/actuarioEconomia" element={<ActEcon />} />
+          <Route path="/actuarioAdministracion" element={<ActAdmin />} />
+          <Route path="/economia" element={<Economia />} />
+          <Route path="/administracion" element={<Admin />} />
+          <Route path="/contador" element={<Contador />} />
+        </Routes>
+      </div>
       {/* <Footer /> */}
     </div>
   );

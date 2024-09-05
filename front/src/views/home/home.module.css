@@ -1,30 +1,66 @@
+:root {
+    --base-font-size: 16px;
+}
+
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 20px;
-    height: 90vh;
+    grid-template-rows: auto auto;
+    gap: 1.25rem; /* 20px converted to rem */
+    margin-bottom: 0.125rem; /* Added margin-bottom */
 }
 
 .grid > div {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 0.625rem; /* 10px converted to rem */
+    border: 0.0625rem solid #ccc; /* 1px converted to rem */
+    border-radius: 0.5rem; /* 8px converted to rem */
     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+/* Areas for larger screens */
 .infoGeneral {
     grid-area: 1 / 1;
 }
 
-.calculoPromedio {
+.barrasProgreso {
     grid-area: 1 / 2;
 }
 
-.barrasProgreso {
+.calculoPromedio {
     grid-area: 2 / 1;
 }
 
 .recomendacionMaterias {
     grid-area: 2 / 2;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        height: auto;
+    }
+
+    .infoGeneral,
+    .calculoPromedio,
+    .barrasProgreso,
+    .recomendacionMaterias {
+        grid-area: auto;
+    }
+
+    /* Ensures the content fits the height of the screen */
+    .grid > div {
+        min-height: 0;
+        max-height: none;
+    }
+
+    /* Ensures the grid items don’t stretch in small screens */
+    .calculoPromedio,
+    .recomendacionMaterias {
+        height: auto; /* Adjust height to content */
+    }
 }

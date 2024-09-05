@@ -1,8 +1,9 @@
+/* Estilos generales para la navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #282c34;
+    background-color: #333333;
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -23,6 +24,38 @@
     gap: 1rem;
 }
 
+/* Estilos para los botones */
+button {
+    background-color: #6b6b6b;
+    border: none;
+    padding: 0.5rem 1rem; /* Padding base */
+    font-size: 1rem; /* Tamaño de fuente base */
+    border-radius: 0.25rem;
+    font-weight: 550;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agregado para una transición suave */
+}
+
+button:hover {
+    background-color: #888888;
+}
+
+/* Ajuste del tamaño de los botones en pantallas más pequeñas */
+@media (max-width: 1200px) {
+    button {
+        padding: 0.4rem 0.8rem; /* Ajusta el padding */
+        font-size: 0.9rem; /* Reduce el tamaño de la fuente */
+    }
+}
+
+@media (max-width: 992px) {
+    button {
+        padding: 0.3rem 0.6rem; /* Ajusta el padding aún más */
+        font-size: 0.85rem; /* Reduce aún más el tamaño de la fuente */
+    }
+}
+
 .dropdownContainer {
     display: none;
     position: relative;
@@ -33,7 +66,7 @@
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #282c34;
+    background-color: #333333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
@@ -45,7 +78,8 @@
     width: 90%;
 }
 
-@media (max-width: 768px) {
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 992px) {
     .carreras {
         display: none;
     }

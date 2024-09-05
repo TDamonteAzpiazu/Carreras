@@ -67,6 +67,11 @@ export const Home = () => {
         return Math.floor(progreso);
     }
 
+    const carreras = Object.keys(materiasXCarrera) as Array<keyof typeof materiasXCarrera>;
+    const carreraConMayorProgreso = carreras.reduce((maxCarrera, carrera) => {
+        return getProgreso(carrera) > getProgreso(maxCarrera) ? carrera : maxCarrera;
+    }, carreras[0]);
+
     // Función para calcular el valor A
     const calcularValorA = (materiasAprobadas: number, materiasCursadas: number) => {
         return materiasCursadas > 0 ? (materiasAprobadas / materiasCursadas) * 100 : 0;
@@ -174,14 +179,14 @@ export const Home = () => {
             <div className={styles.infoGeneral}>
                 <InformacionGeneral />
             </div>
-            <div className={styles.calculoPromedio}>
-                <PromedioRanking promedio={promedio} ranking={calcularRanking(notas, promedio)} />
-            </div>
             <div className={styles.barrasProgreso}>
                 <BarrasProgreso getProgreso={getProgreso} />
             </div>
+            <div className={styles.calculoPromedio}>
+                <PromedioRanking promedio={promedio} ranking={calcularRanking(notas, promedio)} />
+            </div>
             <div className={styles.recomendacionMaterias}>
-                <RecomendacionMaterias />
+                <RecomendacionMaterias carrera={carreraConMayorProgreso} />
             </div>
         </div>
     );

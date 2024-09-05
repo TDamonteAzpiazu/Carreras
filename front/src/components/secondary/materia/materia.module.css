@@ -90,6 +90,23 @@
     margin: 0;
 }
 
+.notas button {
+    background: rgba(0, 0, 0, 0.35);
+    border: none;
+    cursor: pointer;
+    margin-left: 0.3rem;
+    font-weight: bold;
+    color: black;
+    padding: 0.2rem 0.4rem; /* Ajusta el padding para hacerlo más pequeño */
+    font-size: 0.8rem; /* Reduce el tamaño de la fuente */
+    border-radius: 4px; /* Agrega un border-radius si deseas bordes redondeados */
+}
+
+.notas button:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
 .error {
     color: rgb(211, 10, 10);
     font-weight: bold;

@@ -6,7 +6,11 @@ import { contador } from "../../../helpers/contador";
 import { economia } from "../../../helpers/economia";
 import { useMateriasStore } from "../../../store/useMateriasStore";
 
-export const RecomendacionMaterias = () => {
+interface RecomendacionMateriasProps {
+  carrera: string;
+}
+
+export const RecomendacionMaterias = ({carrera} : RecomendacionMateriasProps) => {
   const notas = useMateriasStore((state) => state.notas);
 
   const getHelper = (carrera: string) => {
@@ -72,7 +76,7 @@ export const RecomendacionMaterias = () => {
     return materiasConPuntaje.sort((a, b) => b.puntaje - a.puntaje);
   };
 
-  const materiasRecomendadas = obtenerMateriasOrdenadasPorPuntaje('sistemas');
+  const materiasRecomendadas = obtenerMateriasOrdenadasPorPuntaje(carrera);
   const materiasAMostrar = materiasRecomendadas.slice(0, 3);
 
   return (

@@ -39,6 +39,9 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
         if (!isNaN(newNota) && newNota >= 1 && newNota <= 10) {
             addNota(codigo, newNota);
             setNotaInput('');
+            if(newNota >= 4) {
+                setIsOpen(false);
+            }
         }
     };
 
@@ -51,18 +54,18 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
 
     const getCardColor = () => {
         if (notas.length > 0 && notas[notas.length - 1] >= 4) {
-            return 'green';
+            return '#4caf50';
         }
         if (esOptativa && optativasAprobadas >= optativas) {
-            return 'lightgreen'; 
+            return '#a5d6a7'; 
         }
         if (!canBeTaken) {
-            return 'lightgray'; 
+            return '#bdbdbd'; 
         }
         if (notas.length > 0 && notas[notas.length - 1] < 4) {
-            return 'red'; 
+            return '#f44336'; 
         }
-        return 'yellow'; 
+        return '#f4e300'; 
     };
 
     return (
@@ -96,7 +99,6 @@ export const Materia: React.FC<MateriaProps> = ({ codigo, nombre, cargaHoraria, 
                         {notas.map((nota, index) => (
                             <span
                                 key={index}
-                                style={{ color: nota < 4 ? 'black' : 'black', backgroundColor: nota < 4 ? 'red' : 'transparent' }}
                             >
                                 {nota}
                                 {index === notas.length - 1 && (

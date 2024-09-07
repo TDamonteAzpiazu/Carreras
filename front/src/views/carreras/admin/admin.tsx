@@ -3,6 +3,7 @@ import { useMateriasStore } from "../../../store/useMateriasStore";
 import { admin } from "../../../helpers/admin";
 import style from "./admin.module.css";
 import { Materia } from "../../../components/secondary/materia/materia";
+import { CodigoColores } from "../../../components/secondary/codigoColores/codigoColores";
 
 export const Admin = () => {
     const materiasNotas = useMateriasStore((state) => state.notas);
@@ -20,6 +21,7 @@ export const Admin = () => {
     return (
         <div>
             <h2>Materias de admin</h2>
+            <CodigoColores />
             <div className={style.container}>
                 {admin
                     .filter(materia => !materia.esOptativa)

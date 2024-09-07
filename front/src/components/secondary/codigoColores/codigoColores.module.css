@@ -1,0 +1,20 @@
+.colorCoding {
+    display: flex;
+    gap: 1rem; /* Espacio entre los items */
+    flex-wrap: wrap;
+}
+  
+.colorItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre el círculo y el texto */
+    font-size: 1rem; /* Tamaño del texto */
+}
+  
+.colorCircle {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 0.15rem solid; /* Ancho del borde */
+}

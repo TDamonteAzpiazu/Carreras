@@ -8,6 +8,7 @@ export const PromedioRanking = ({ promedio, ranking }: { promedio: string | numb
     // Función para actualizar los puntos según la respuesta del usuario
     const manejarRespuesta = (valor: number) => {
         setPuntosEncuesta(valor);
+        // setMostrarEncuesta(!mostrarEncuesta);
     };
 
     // Función para alternar la visualización de la encuesta
@@ -23,7 +24,7 @@ export const PromedioRanking = ({ promedio, ranking }: { promedio: string | numb
                 {/* Componente de Promedio */}
                 <div className={styles.leftComponent}>
                     <h3 className={styles.rankingTitle}>Promedio</h3>
-                    <h1 className={styles.rankingValue}>{promedio}</h1>
+                    <h1 className={styles.promedioValue}>{promedio}</h1>
                 </div>
 
                 {/* Componente de Ranking */}

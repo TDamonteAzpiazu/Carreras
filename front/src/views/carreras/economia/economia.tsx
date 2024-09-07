@@ -3,6 +3,7 @@ import { useMateriasStore } from "../../../store/useMateriasStore";
 import { economia } from "../../../helpers/economia";
 import style from "./economia.module.css";
 import { Materia } from "../../../components/secondary/materia/materia";
+import { CodigoColores } from "../../../components/secondary/codigoColores/codigoColores";
 
 export const Economia = () => {
     const materiasNotas = useMateriasStore((state) => state.notas);
@@ -20,6 +21,7 @@ export const Economia = () => {
     return (
         <div>
             <h2>Materias de economia</h2>
+            <CodigoColores />
             <div className={style.container}>
                 {economia
                     .filter(materia => !materia.esOptativa)

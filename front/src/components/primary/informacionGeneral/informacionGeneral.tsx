@@ -8,7 +8,7 @@ export const InformacionGeneral = () => {
             <section className={styles.section}>
                 <h2>¿Cómo usar esta página?</h2>
                 <p>
-                    La idea de esta página es ayudar a los estudiantes a elegir qué materias cursar en el próximo cuatrimestre y mostrarle cuál es su promedio y ranking.
+                    La idea de esta página es ayudar a los estudiantes a elegir qué materias cursar en el próximo cuatrimestre y mostrarles cuál es su promedio y ranking.
                     Las recomendaciones se basan en cuántos cuatrimestres tiene para adelante cada materia segun correlatividades.
                     Recién al completar todas las notas(aprobados y desaprobados), se va a ver el promedio, ranking y recomendaciones reales.
                 </p>

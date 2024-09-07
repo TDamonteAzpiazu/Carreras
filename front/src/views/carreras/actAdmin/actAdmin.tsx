@@ -3,6 +3,7 @@ import { useMateriasStore } from "../../../store/useMateriasStore";
 import { actuarioAdmin } from "../../../helpers/actuarioAdmin";
 import style from "./actAdmin.module.css";
 import { Materia } from "../../../components/secondary/materia/materia";
+import { CodigoColores } from "../../../components/secondary/codigoColores/codigoColores";
 
 export const ActAdmin = () => {
     const materiasNotas = useMateriasStore((state) => state.notas);
@@ -20,6 +21,7 @@ export const ActAdmin = () => {
     return (
         <div>
             <h2>Materias de actuarioAdmin</h2>
+            <CodigoColores />
             <div className={style.container}>
                 {actuarioAdmin
                     .filter(materia => !materia.esOptativa)

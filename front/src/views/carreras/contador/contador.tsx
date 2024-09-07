@@ -3,6 +3,7 @@ import { useMateriasStore } from "../../../store/useMateriasStore";
 import { contador } from "../../../helpers/contador";
 import style from "./contador.module.css";
 import { Materia } from "../../../components/secondary/materia/materia";
+import { CodigoColores } from "../../../components/secondary/codigoColores/codigoColores";
 
 export const Contador = () => {
     const materiasNotas = useMateriasStore((state) => state.notas);
@@ -20,6 +21,7 @@ export const Contador = () => {
     return (
         <div>
             <h2>Materias de contador</h2>
+            <CodigoColores />
             <div className={style.container}>
                 {contador
                     .filter(materia => !materia.esOptativa)

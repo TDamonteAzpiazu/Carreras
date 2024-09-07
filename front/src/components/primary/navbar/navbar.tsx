@@ -23,8 +23,8 @@ export const Navbar = () => {
             <div className={styles.right}>
                 <div className={styles.carreras}>
                     <Link to='/sistemas'><button>Sistemas</button></Link>
-                    <Link to='/actuarioEconomia'><button>Actuario en Economía</button></Link>
-                    <Link to='/actuarioAdministracion'><button>Actuario en Administración</button></Link>
+                    <Link to='/actuarioEconomia'><button>Actuario Econ</button></Link>
+                    <Link to='/actuarioAdministracion'><button>Actuario Admin</button></Link>
                     <Link to='/economia'><button>Economía</button></Link>
                     <Link to='/administracion'><button>Administración</button></Link>
                     <Link to='/contador'><button>Contador</button></Link>
@@ -34,8 +34,8 @@ export const Navbar = () => {
                     {isDropdownOpen && (
                         <div className={styles.dropdownMenu}>
                             <button onClick={() => closeDropdownAndNavigate('/sistemas')}>Sistemas</button>
-                            <button onClick={() => closeDropdownAndNavigate('/actuarioEconomia')}>Actuario en Economía</button>
-                            <button onClick={() => closeDropdownAndNavigate('/actuarioAdministracion')}>Actuario en Administración</button>
+                            <button onClick={() => closeDropdownAndNavigate('/actuarioEconomia')}>Actuario Econ</button>
+                            <button onClick={() => closeDropdownAndNavigate('/actuarioAdministracion')}>Actuario Admin</button>
                             <button onClick={() => closeDropdownAndNavigate('/economia')}>Economía</button>
                             <button onClick={() => closeDropdownAndNavigate('/administracion')}>Administración</button>
                             <button onClick={() => closeDropdownAndNavigate('/contador')}>Contador</button>

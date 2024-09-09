@@ -1,39 +1,44 @@
 import create from 'zustand';
+import { persist } from 'zustand/middleware';
 
 interface MateriaState {
-    notas: { [codigo: number]: number[] };
+    notas: { [codigo: string]: number[] };
     addNota: (codigo: number, nota: number) => void;
     deleteLastNota: (codigo: number) => void;
 }
 
-export const useMateriasStore = create<MateriaState>((set) => ({
-    notas: {},
-    addNota: (codigo, nota) => {
-        set((state) => {
-            const existingNotas = state.notas[codigo] || [];
-            return {
-                notas: {
-                    ...state.notas,
-                    [codigo]: [...existingNotas, nota],
-                },
-            };
-        });
-    },
-    deleteLastNota: (codigo) => {
-        set((state) => {
-            const notas = state.notas[codigo];
+export const useMateriasStore = create<MateriaState>()(
+    persist(
+        (set) => ({
+            notas: {},
+            addNota: (codigo, nota) => {
+                set((state) => {
+                    const existingNotas = state.notas[codigo] || [];
+                    return {
+                        notas: {
+                            ...state.notas,
+                            [codigo]: [...existingNotas, nota],
+                        },
+                    };
+                });
+            },
+            deleteLastNota: (codigo) => {
+                set((state) => {
+                    const notas = state.notas[codigo];
+                
+                    if (notas && notas.length > 0) {
+                        return {
+                            notas: {
+                                ...state.notas,
+                                [codigo]: notas.slice(0, -1),
+                            },
+                        };
+                    }
 
-            if (notas && notas.length > 0) {
-                return {
-                    notas: {
-                        ...state.notas,
-                        [codigo]: notas.slice(0, -1),
-                    },
-                };
-            }
-
-            // Retorna el estado sin cambios si no hay notas que eliminar
-            return state;
-        });
-    },
-}));
+                    return state; // Retorna el estado sin cambios si no hay notas
+                });
+            },
+        }),
+        { name: 'notas-store' }
+    )
+);

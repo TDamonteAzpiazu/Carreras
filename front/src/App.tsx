@@ -12,7 +12,7 @@ import { Economia } from './views/carreras/economia/economia';
 
 function App() {
   return (
-    <div>
+    <div className="todo">
       <Navbar />
       <div className="container">
         <Routes>
@@ -25,7 +25,7 @@ function App() {
           <Route path="/contador" element={<Contador />} />
         </Routes>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

@@ -5,6 +5,7 @@ interface MateriaState {
     notas: { [codigo: string]: number[] };
     addNota: (codigo: number, nota: number) => void;
     deleteLastNota: (codigo: number) => void;
+    reset: () => void;
 }
 
 export const useMateriasStore = create<MateriaState>()(
@@ -38,6 +39,7 @@ export const useMateriasStore = create<MateriaState>()(
                     return state; // Retorna el estado sin cambios si no hay notas
                 });
             },
+            reset: () => set({ notas: {} }), // Implementación del método reset
         }),
         { name: 'notas-store' }
     )

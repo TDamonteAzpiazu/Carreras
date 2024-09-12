@@ -12,7 +12,7 @@ export const CodigoColores = () => {
           <span className={style.colorCircle} style={{ backgroundColor: '#f44336', borderColor: '#f44336' }}></span>
           Materias desaprobadas
         </span>
-        <span className={style.colorItem} style={{ color: '#f4e300' }}>
+        <span className={style.colorItem} style={{ color: '#c8b900' }}>
           <span className={style.colorCircle} style={{ backgroundColor: '#f4e300', borderColor: '#f4e300' }}></span>
           Materias desbloqueadas
         </span>

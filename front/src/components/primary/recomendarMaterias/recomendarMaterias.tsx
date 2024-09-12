@@ -82,9 +82,11 @@ export const RecomendacionMaterias = ({carrera} : RecomendacionMateriasProps) =>
   return (
     <div>
       <h3>Recomendaciones</h3>
+      <ul>
         {materiasAMostrar.map((materia) => (
           <li key={materia.codigo}>{materia.nombre}</li>
         ))}
+      </ul>
     </div>
   );
 };

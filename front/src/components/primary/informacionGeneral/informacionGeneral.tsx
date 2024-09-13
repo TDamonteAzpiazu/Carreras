@@ -8,29 +8,15 @@ export const InformacionGeneral = () => {
             <section className={styles.section}>
                 <h2>¿Cómo usar esta página?</h2>
                 <p>
-                    La idea de esta página es ayudar a los estudiantes a elegir qué materias cursar en el próximo cuatrimestre y mostrarles cuál es su promedio y ranking.
-                    Las recomendaciones se basan en cuántos cuatrimestres tiene para adelante cada materia segun correlatividades.
-                    Recién al completar todas las notas(aprobados y desaprobados), se va a ver el promedio, ranking y recomendaciones reales.
+                    Esta página está diseñada para ayudar a los estudiantes a seleccionar las materias que cursarán en el próximo cuatrimestre y para mostrarles su promedio y ranking académico. Las recomendaciones se basan en el impacto que cada materia tiene en el progreso académico, teniendo en cuenta las correlatividades. Completa todas tus notas, tanto aprobadas como desaprobadas, para ver recomendaciones precisas, así como tu promedio y ranking actualizado.
                 </p>
             </section>
             
             <section className={styles.section}>
                 <h2>¿Por qué creé esta aplicación?</h2>
                 <p>
-                    Creo que al principio a la gente le cuesta ver qué materias puede o le conviene hacer y cuáles no, asique fue un poco para ayudar a esa gente.
-                    Y un poco porque estaba aburrido y no sabía que hacer como proyecto de programación.
+                    Creé esta aplicación para simplificar la elección de materias para los estudiantes, ya que a menudo resulta difícil identificar cuáles materias conviene cursar. Además, fue un proyecto interesante para desarrollar mis habilidades de programación y explorar nuevas tecnologías.
                 </p>
-            </section>
-            
-            <section className={styles.section}>
-                <h2>Contacto</h2>
-                <p>
-                    X si alguno tiene ganas de contratarme
-                </p>
-                <ul>
-                    <li>Email: <a href="mailto:tobidamonte@gmail.com">tobidamonte@gmail.com</a></li>
-                    <li>LinkedIn: <a href="https://www.linkedin.com/in/tobiasdamonteazpiazu/" target="_blank" rel="noopener noreferrer">Tobías Damonte Azpiazu</a></li>
-                </ul>
             </section>
         </div>
     );

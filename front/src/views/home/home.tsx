@@ -140,7 +140,6 @@ export const Home = () => {
         const carreras = Object.keys(materiasXCarrera) as Array<keyof typeof materiasXCarrera>;
 
         carreras.forEach(carrera => {
-            const { materias, optativas } = materiasXCarrera[carrera];
             const materiasHelper = getHelper(carrera);
 
             materiasHelper.forEach((materia) => {

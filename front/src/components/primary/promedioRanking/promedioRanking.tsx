@@ -41,7 +41,7 @@ export const PromedioRanking = ({ promedio, ranking }: { promedio: string | numb
                         <div className={styles.checkboxGroup}>
                             <h4>¿Contestaste las encuestas del cuatrimestre pasado?</h4>
 
-                            <div>
+                            <div className={styles.checkboxContainer}>
                                 <input
                                     type="checkbox"
                                     id="primera"
@@ -51,7 +51,7 @@ export const PromedioRanking = ({ promedio, ranking }: { promedio: string | numb
                                 <label htmlFor="primera" className={styles.label}>Sí, en el primer llamado</label>
                             </div>
 
-                            <div>
+                            <div className={styles.checkboxContainer}>
                                 <input
                                     type="checkbox"
                                     id="segunda"
@@ -61,7 +61,7 @@ export const PromedioRanking = ({ promedio, ranking }: { promedio: string | numb
                                 <label htmlFor="segunda" className={styles.label}>Sí, en el segundo llamado</label>
                             </div>
 
-                            <div>
+                            <div className={styles.checkboxContainer}>
                                 <input
                                     type="checkbox"
                                     id="no"

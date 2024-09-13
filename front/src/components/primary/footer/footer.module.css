@@ -1,40 +1,79 @@
-/* footer.module.css */
-
-/* Estilos generales para el footer */
 .footer {
-    display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center;
-    background-color: #34495e; /* Mismo color que la navbar */
-    padding: 1rem;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra similar a la navbar */
+    background-color: #34495e; /* Fondo del footer */
+    padding: 1.5rem;
+    width: 100%;
+    border-top: 1px solid #2c3e50;
     position: relative;
-    width: 100%; /* Asegura que el footer no exceda el ancho del contenedor */
-    box-sizing: border-box; /* Incluye padding y border en el ancho total */
-    color: #ffffff; /* Color del texto del footer */
-    font-size: 0.875rem; /* Tamaño de fuente para el footer */
-    text-align: center; /* Centra el texto */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Alinea las secciones a los extremos */
+    align-items: center;
+    max-width: 1200px; /* Controla el ancho máximo del footer */
+    margin: 0 auto; /* Centra el footer en la página */
+    flex-wrap: nowrap; /* Evita que las secciones se vayan a la siguiente línea */
+    padding: 0 1rem; /* Evita el scroll horizontal */
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espacio entre el texto y los íconos */
+    color: #fff; /* Color del texto */
+}
+
+.author {
+    font-size: 1.2rem;
+}
+
+.icons {
+    display: flex;
+    gap: 1rem; /* Espacio entre íconos */
+    margin-top: 0.5rem;
+}
+
+.icon {
+    color: #fff;
+    background-color: #2c3e50;
+    padding: 0.5rem;
+    border-radius: 50%; /* Íconos redondos */
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.icon:hover {
+    background-color: #105ba7;
+    color: #fff; /* Mantiene el color blanco en el hover */
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espacio entre el texto y el botón */
+    color: #fff; /* Color del texto */
+    font-size: 1.2rem;
 }
 
 .clearButton {
-    background-color: #2c3e50; /* Color del botón, similar al de la navbar */
+    background-color: #2c3e50; /* Color del botón */
     color: white;
+    padding: 0.7rem 1.2rem;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .clearButton:hover {
-    background-color: #105ba7;
+    background-color: #105ba7; /* Color del hover */
+    color: #fff; /* Asegura que el texto siga siendo blanco */
 }
 
-/* Evita el desbordamiento horizontal */
-html, body {
-    overflow-x: hidden; /* Previene el desplazamiento horizontal */
-}
-
-.footer * {
-    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+/* Evita el scroll horizontal */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }

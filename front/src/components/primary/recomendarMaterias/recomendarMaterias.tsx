@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { sistemas } from "../../../helpers/sistemas";
 import { actuarioAdmin } from "../../../helpers/actuarioAdmin";
 import { actuarioEcon } from "../../../helpers/actuarioEcon";
@@ -5,12 +6,11 @@ import { admin } from "../../../helpers/admin";
 import { contador } from "../../../helpers/contador";
 import { economia } from "../../../helpers/economia";
 import { useMateriasStore } from "../../../store/useMateriasStore";
+import styles from "./recomendarMaterias.module.css";
 
-interface RecomendacionMateriasProps {
-  carrera: string;
-}
-
-export const RecomendacionMaterias = ({carrera} : RecomendacionMateriasProps) => {
+export const RecomendacionMaterias = () => {
+  const [carreraSeleccionada, setCarreraSeleccionada] = useState<string>('sistemas');
+  const [cantidadMaterias, setCantidadMaterias] = useState<number>(3);
   const notas = useMateriasStore((state) => state.notas);
 
   const getHelper = (carrera: string) => {
@@ -76,17 +76,55 @@ export const RecomendacionMaterias = ({carrera} : RecomendacionMateriasProps) =>
     return materiasConPuntaje.sort((a, b) => b.puntaje - a.puntaje);
   };
 
-  const materiasRecomendadas = obtenerMateriasOrdenadasPorPuntaje(carrera);
-  const materiasAMostrar = materiasRecomendadas.slice(0, 3);
+  const materiasRecomendadas = obtenerMateriasOrdenadasPorPuntaje(carreraSeleccionada);
+  const materiasAMostrar = materiasRecomendadas.slice(0, cantidadMaterias);
 
   return (
-    <div>
-      <h3>Recomendaciones</h3>
-      <ul>
+    <div className={styles.container}>
+      <h3 className={styles.title}>Recomendaciones</h3>
+      
+      {/* Input para seleccionar la carrera */}
+      <label>
+        Selecciona una carrera:
+        <select 
+          value={carreraSeleccionada} 
+          onChange={(e) => setCarreraSeleccionada(e.target.value)}
+          className={styles.inputField}
+        >
+          <option value="sistemas">Sistemas</option>
+          <option value="actuarioEconomia">Actuario Economía</option>
+          <option value="actuarioAdministracion">Actuario Administración</option>
+          <option value="economia">Economía</option>
+          <option value="administracion">Administración</option>
+          <option value="contador">Contador</option>
+        </select>
+      </label>
+
+      {/* Reemplaza el input de cantidad de materias por un select */}
+      <label>
+        Cantidad de materias a recomendar (1-6):
+        <select 
+          value={cantidadMaterias} 
+          onChange={(e) => setCantidadMaterias(Number(e.target.value))}
+          className={styles.inputField}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </label>
+
+      <div className={styles.materiasContainer}>
         {materiasAMostrar.map((materia) => (
-          <li key={materia.codigo}>{materia.nombre}</li>
+          <div className={styles.materias}>
+            <h3>{materia.nombre}</h3>
+            <p>{materia.codigo}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

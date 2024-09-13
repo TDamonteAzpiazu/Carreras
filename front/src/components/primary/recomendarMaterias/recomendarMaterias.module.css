@@ -1,0 +1,99 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.materiasContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    width: 100%;
+    max-width: 900px; /* Ajusta el ancho máximo para que entren tres tarjetas */
+    margin-top: 1rem;
+}
+
+.materias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 25%; /* Cada tarjeta ocupa el 30% del contenedor */
+    max-width: 250px; /* Evita que las tarjetas sean muy grandes */
+}
+
+.materias h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.materias p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+input,
+select {
+    margin-left: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    width: 150px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #007bff;
+}
+
+.inputField {
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 0.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .materiasContainer {
+        justify-content: center;
+    }
+
+    .materias {
+        width: 45%; /* Ajuste para dispositivos más pequeños */
+    }
+
+    input,
+    select {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}

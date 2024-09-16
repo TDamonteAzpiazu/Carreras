@@ -20,8 +20,12 @@ export const Contador = () => {
 
     return (
         <div>
-            <h2>Materias de contador</h2>
-            <CodigoColores />
+            <div className={style.header}>
+                <h2 className={style.title}>Contador</h2>
+                <div className={style.colores}>
+                    <CodigoColores />
+                </div>
+            </div>
             <div className={style.container}>
                 {contador
                     .filter(materia => !materia.esOptativa)

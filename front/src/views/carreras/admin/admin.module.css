@@ -8,6 +8,25 @@
     font-size: 1rem;
 }
 
+
+.title {
+    font-size: 1.7rem; /* Tamaño del título */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 1rem;
+}
+
+.colores {
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente si es necesario */
+    margin-bottom: 1rem; /* Espacio inferior entre el código de colores y el resto */
+}
+
 /* Ajuste para el contenedor de tarjetas */
 .container {
     display: grid;

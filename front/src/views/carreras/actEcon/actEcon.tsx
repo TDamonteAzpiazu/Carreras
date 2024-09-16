@@ -20,8 +20,12 @@ export const ActEcon = () => {
 
     return (
         <div>
-            <h2>Materias de actuarioEcon</h2>
-            <CodigoColores />
+            <div className={style.header}>
+                <h2 className={style.title}>Actuario en Economía</h2>
+                <div className={style.colores}>
+                    <CodigoColores />
+                </div>
+            </div>
             <div className={style.container}>
                 {actuarioEcon
                     .filter(materia => !materia.esOptativa)

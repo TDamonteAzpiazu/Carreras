@@ -20,8 +20,12 @@ export const Sistemas = () => {
 
     return (
         <div>
-            <h2>Materias de Sistemas</h2>
-            <CodigoColores />
+            <div className={style.header}>
+                <h2 className={style.title}>Sistemas de Información de las Organizaciones</h2>
+                <div className={style.colores}>
+                    <CodigoColores />
+                </div>
+            </div>
             <div className={style.container}>
                 {sistemas
                     .filter(materia => !materia.esOptativa)

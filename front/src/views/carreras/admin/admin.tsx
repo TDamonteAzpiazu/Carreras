@@ -20,8 +20,12 @@ export const Admin = () => {
 
     return (
         <div>
-            <h2>Materias de admin</h2>
-            <CodigoColores />
+            <div className={style.header}>
+                <h2 className={style.title}>Administración</h2>
+                <div className={style.colores}>
+                    <CodigoColores />
+                </div>
+            </div>
             <div className={style.container}>
                 {admin
                     .filter(materia => !materia.esOptativa)

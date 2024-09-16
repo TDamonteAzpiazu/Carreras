@@ -8,7 +8,6 @@ export const Footer = () => {
     const handleClearStorage = () => {
         localStorage.clear();
         resetStore();
-        alert('LocalStorage y estado reseteados');
     };
 
     return (

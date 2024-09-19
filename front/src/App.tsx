@@ -8,11 +8,10 @@ import { Contador } from './views/carreras/contador/contador';
 import { ActEcon } from './views/carreras/actEcon/actEcon';
 import { ActAdmin } from './views/carreras/actAdmin/actAdmin';
 import { Economia } from './views/carreras/economia/economia';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
       <div className="todo">
         <Navbar />
         <div className="container">
@@ -28,7 +27,6 @@ function App() {
         </div>
         <Footer />
       </div>
-    </Router>
   );
 }
 

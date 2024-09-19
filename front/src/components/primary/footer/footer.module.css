@@ -13,7 +13,7 @@
     max-width: 1200px; /* Controla el ancho máximo del footer */
     margin: 0 auto; /* Centra el footer en la página */
     flex-wrap: nowrap; /* Evita que las secciones se vayan a la siguiente línea */
-    padding: 0 1rem; /* Evita el scroll horizontal */
+    padding: 0 2rem; /* Evita el scroll horizontal y añade padding a los lados */
 }
 
 .leftSection {
@@ -51,9 +51,10 @@
 .rightSection {
     display: flex;
     align-items: center;
-    gap: 1rem; /* Espacio entre el texto y el botón */
+    gap: 2rem; /* Más espacio entre el texto y el botón */
     color: #fff; /* Color del texto */
     font-size: 1.2rem;
+    padding-right: 2rem; /* Añade padding a la derecha del botón */
 }
 
 .clearButton {
@@ -64,6 +65,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    max-width: 300px; /* Limita el ancho máximo del botón */
+    width: 100%; /* Se asegura de que el botón no ocupe todo el espacio */
 }
 
 .clearButton:hover {
@@ -76,4 +79,51 @@ body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+}
+
+/* --- Media Queries para hacer el Footer responsive --- */
+
+/* Para pantallas medianas como tablets */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Coloca las secciones una debajo de la otra */
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .leftSection, .rightSection {
+        margin-bottom: 1rem;
+        gap: 1rem; /* Reduce un poco el espacio entre los ítems */
+    }
+
+    .clearButton {
+        width: 100%; /* Botón ocupa el ancho completo en pantallas medianas */
+        max-width: 300px; /* Limita el ancho máximo del botón */
+    }
+}
+
+/* Para pantallas pequeñas como móviles */
+@media (max-width: 480px) {
+    .footer {
+        padding: 1rem;
+    }
+
+    .author {
+        font-size: 1rem;
+    }
+
+    .icon {
+        font-size: 1.2rem; /* Íconos más pequeños en pantallas móviles */
+    }
+
+    .clearButton {
+        padding: 0.6rem 1rem; /* Botón más pequeño */
+        width: 100%; /* Asegura que el botón siga ocupando el ancho completo */
+        max-width: 200px; /* Establece un max-width más pequeño en móviles */
+    }
+
+    .rightSection {
+        padding-right: 1rem; /* Agrega un poco de padding a la derecha en móviles */
+    }
 }

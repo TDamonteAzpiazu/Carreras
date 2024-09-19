@@ -18,7 +18,7 @@ export const Navbar = () => {
     return (
         <div className={styles.navbar}>
             <div className={styles.left}>
-                <Link to='/'><button>Home</button></Link>
+                <Link to='/'><button>Inicio</button></Link>
             </div>
             <div className={styles.right}>
                 <div className={styles.carreras}>

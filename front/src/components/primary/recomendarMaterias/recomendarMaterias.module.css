@@ -5,6 +5,8 @@
     justify-content: center;
     width: 100%;
     margin-top: 1rem;
+    padding: 0 1rem; /* Añade padding lateral para evitar que el contenido toque los bordes */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho total */
 }
 
 .title {
@@ -19,6 +21,8 @@
     width: 100%;
     max-width: 900px; /* Ajusta el ancho máximo */
     margin-top: 1rem;
+    padding: 0 1rem; /* Padding lateral para evitar que el contenido toque los bordes */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho total */
 }
 
 .materias {
@@ -33,6 +37,8 @@
     border-radius: 0.5rem;
     background-color: #f9f9f9;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Asegura que el ancho máximo no exceda el contenedor */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho total */
 }
 
 .materias h3 {
@@ -89,6 +95,7 @@ select:focus {
 
     .materiasContainer {
         grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+        padding: 0; /* Elimina el padding lateral para pantallas pequeñas */
     }
 
     input,
@@ -99,7 +106,17 @@ select:focus {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 0.5rem; /* Añade padding lateral para evitar el desbordamiento */
+    }
+
+    .materiasContainer {
+        grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+        padding: 0; /* Elimina el padding lateral para pantallas muy pequeñas */
+    }
+
     .materias {
-        width: 100%; /* Ancho completo en móviles */
+        width: calc(100% - 1rem); /* Reduce el ancho para tener un pequeño margen */
+        margin: 0.5rem 0; /* Ajusta el margen para pantallas muy pequeñas */
     }
 }

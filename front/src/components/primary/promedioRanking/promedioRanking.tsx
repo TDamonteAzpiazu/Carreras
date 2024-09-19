@@ -39,7 +39,7 @@ export const PromedioRanking = ({ promedio, ranking }: { promedio: string | numb
 
                     {mostrarEncuesta && (
                         <div className={styles.checkboxGroup}>
-                            <h4>¿Contestaste las encuestas del cuatrimestre pasado?</h4>
+                            <h4>¿Contestaste las últimas encuestas?</h4>
 
                             <div className={styles.checkboxContainer}>
                                 <input
@@ -48,7 +48,7 @@ export const PromedioRanking = ({ promedio, ranking }: { promedio: string | numb
                                     checked={puntosEncuesta === 10}
                                     onChange={() => manejarRespuesta(puntosEncuesta === 10 ? 0 : 10)}
                                 />
-                                <label htmlFor="primera" className={styles.label}>Sí, en el primer llamado</label>
+                                <label htmlFor="primera" className={styles.label}>Primer llamado</label>
                             </div>
 
                             <div className={styles.checkboxContainer}>
@@ -58,7 +58,7 @@ export const PromedioRanking = ({ promedio, ranking }: { promedio: string | numb
                                     checked={puntosEncuesta === 5}
                                     onChange={() => manejarRespuesta(puntosEncuesta === 5 ? 0 : 5)}
                                 />
-                                <label htmlFor="segunda" className={styles.label}>Sí, en el segundo llamado</label>
+                                <label htmlFor="segunda" className={styles.label}>Segundo llamado</label>
                             </div>
 
                             <div className={styles.checkboxContainer}>

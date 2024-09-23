@@ -165,7 +165,7 @@ export const Home = () => {
         const C = calcularValorC(promedio);
         const D = calcularValorD(notas);
 
-        return A + B + C + D;
+        return parseFloat((A + B + C + D).toFixed(2));
     };
 
     return (

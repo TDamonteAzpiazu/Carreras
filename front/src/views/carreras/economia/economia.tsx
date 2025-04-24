@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMateriasStore } from "../../../store/useMateriasStore";
-import { economia } from "../../../helpers/economia";
+import { economia } from "../../../helpers/economiaPlanViejo";
 import style from "./economia.module.css";
 import { Materia } from "../../../components/secondary/materia/materia";
 import { CodigoColores } from "../../../components/secondary/codigoColores/codigoColores";

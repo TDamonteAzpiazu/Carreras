@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { sistemas } from "../../../helpers/sistemas";
-import { actuarioAdmin } from "../../../helpers/actuarioAdmin";
-import { actuarioEcon } from "../../../helpers/actuarioEcon";
-import { admin } from "../../../helpers/admin";
+import { sistemas } from "../../../helpers/sistemasPlanViejo";
+import { actuarioAdmin } from "../../../helpers/actuarioAdminPlanViejo";
+import { actuarioEcon } from "../../../helpers/actuarioEconPlanViejo";
+import { admin } from "../../../helpers/adminPlanViejo";
 import { contador } from "../../../helpers/contador";
-import { economia } from "../../../helpers/economia";
+import { economia } from "../../../helpers/economiaPlanViejo";
 import { useMateriasStore } from "../../../store/useMateriasStore";
 import styles from "./recomendarMaterias.module.css";
 

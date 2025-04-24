@@ -294,15 +294,36 @@ export const contador = [
         "correlativas": [279]
     },
     {
-        "codigo": 704,
-        "nombre": "Auditorías Especiales",
+        "codigo": 479,
+        "nombre": "Negocios Internacionales",
         "cargaHorariaSemanal": 4,
         "esOptativa": true,
         "correlativas": []
     },
     {
-        "codigo": 705,
-        "nombre": "Oratoria, Imagen y Marca Personal",
+        "codigo": 482,
+        "nombre": "Gestión Estratégica para la Transformación Social",
+        "cargaHorariaSemanal": 4,
+        "esOptativa": true,
+        "correlativas": []
+    },
+    {
+        "codigo": 484,
+        "nombre": "Oratoria",
+        "cargaHorariaSemanal": 4,
+        "esOptativa": true,
+        "correlativas": []
+    },
+    {
+        "codigo": 702,
+        "nombre": "Auditorías de Sistemas de Información",
+        "cargaHorariaSemanal": 4,
+        "esOptativa": true,
+        "correlativas": []
+    },
+    {
+        "codigo": 704,
+        "nombre": "Auditorías Especiales",
         "cargaHorariaSemanal": 4,
         "esOptativa": true,
         "correlativas": []
@@ -324,13 +345,6 @@ export const contador = [
     {
         "codigo": 709,
         "nombre": "Derecho Procesal - Recursos",
-        "cargaHorariaSemanal": 4,
-        "esOptativa": true,
-        "correlativas": []
-    },
-    {
-        "codigo": 710,
-        "nombre": "Dinámica Estratégica Operacional",
         "cargaHorariaSemanal": 4,
         "esOptativa": true,
         "correlativas": []
@@ -371,13 +385,6 @@ export const contador = [
         "correlativas": []
     },
     {
-        "codigo": 760,
-        "nombre": "Prácticas para la Inclusión Social",
-        "cargaHorariaSemanal": 4,
-        "esOptativa": true,
-        "correlativas": []
-    },
-    {
         "codigo": 769,
         "nombre": "Procedimiento Contencioso Administrativo y Fiscal",
         "cargaHorariaSemanal": 4,
@@ -390,13 +397,6 @@ export const contador = [
         "cargaHorariaSemanal": 4,
         "esOptativa": true,
         "correlativas": []
-    },
-    {
-        "codigo": 789,
-        "nombre": "Comercialización Internacional",
-        "cargaHorariaSemanal": 4,
-        "esOptativa": true,
-        "correlativas": [279, 353]
     },
     {
         "codigo": 791,
@@ -413,9 +413,9 @@ export const contador = [
         "correlativas": []
     },
     {
-        "codigo": 1659,
-        "nombre": "Auditoría y Seguridad de los Sistemas de Información",
-        "cargaHorariaSemanal": 6,
+        "codigo": 800,
+        "nombre": "Procedimientos Presupuestarios y Parlamentarios",
+        "cargaHorariaSemanal": 4,
         "esOptativa": true,
         "correlativas": []
     },

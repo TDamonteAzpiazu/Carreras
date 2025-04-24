@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMateriasStore } from "../../../store/useMateriasStore";
-import { actuarioEcon } from "../../../helpers/actuarioEcon";
+import { actuarioEcon } from "../../../helpers/actuarioEconPlanViejo";
 import style from "./actEcon.module.css";
 import { Materia } from "../../../components/secondary/materia/materia";
 import { CodigoColores } from "../../../components/secondary/codigoColores/codigoColores";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMateriasStore } from "../../../store/useMateriasStore";
-import { sistemas } from "../../../helpers/sistemas";
+import { sistemas } from "../../../helpers/sistemasPlanViejo";
 import style from "./sistemas.module.css";
 import { Materia } from "../../../components/secondary/materia/materia";
 import { CodigoColores } from "../../../components/secondary/codigoColores/codigoColores";

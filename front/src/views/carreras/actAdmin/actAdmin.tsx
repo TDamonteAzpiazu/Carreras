@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMateriasStore } from "../../../store/useMateriasStore";
-import { actuarioAdmin } from "../../../helpers/actuarioAdmin";
+import { actuarioAdmin } from "../../../helpers/actuarioAdminPlanViejo";
 import style from "./actAdmin.module.css";
 import { Materia } from "../../../components/secondary/materia/materia";
 import { CodigoColores } from "../../../components/secondary/codigoColores/codigoColores";

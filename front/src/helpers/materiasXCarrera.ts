@@ -17,7 +17,7 @@ export const materiasXCarrera = {
     },
     administracion: {
         materias: 31,
-        optativas: 2
+        optativas: 3
     },
     contador: {
         materias: 34,
